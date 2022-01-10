@@ -1,0 +1,26 @@
+<h1>Users</h1>
+
+<table class="table" id='tab'>
+    <thead>
+        <tr>
+            
+            <th scope="col">User ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">prenom</th>
+            <th scope="col">matricule</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let user of users">
+           
+            <td>{{ user.id}}</td>
+            <td>{{ user.nom}}</td>
+            <td>{{ user.prenom}}</td>
+            <td>{{ user.matricule}}</td>
+            
+            <td> <button (click)="userDetails(user.id)" class='btn btn-info' data-toggle="modal"
+                    data-target="#myModal">Details</button> </td>
+        </tr>
+    </tbody>
+</table>

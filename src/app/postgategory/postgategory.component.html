@@ -1,0 +1,48 @@
+<div class="col-md-12">
+    <div class="card card-container">
+   
+      <form
+        *ngIf="!isSuccessful"
+        name="form"
+        (ngSubmit)="f.form.valid && onSubmit()"
+        #f="ngForm"
+        novalidate
+      >
+        <div class="form-group">
+          <label for="label">Categoryname</label>
+          <input
+            type="text"
+            class="form-control"
+            name="label"
+            [(ngModel)]="form.label"
+            required
+            minlength="3"
+            maxlength="20"
+            #label="ngModel"
+          />
+          <div class="alert-danger" *ngIf="label.errors && f.submitted">
+            <div *ngIf="label.errors['required']">Category is required</div>
+            <div *ngIf="label.errors['minlength']">
+                Category must be at least 3 characters
+            </div>
+            <div *ngIf="label.errors['maxlength']">
+                Category must be at most 20 characters
+            </div>
+          </div>
+        </div>
+        
+    
+        <div class="form-group">
+          <button class="btn btn-primary btn-block">Sign Up</button>
+        </div>
+  
+        <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
+          Signup failed!<br />{{ errorMessage }}
+        </div>
+      </form>
+  
+      <div class="alert alert-success" *ngIf="isSuccessful">
+       Category  successful Added!
+      </div>
+    </div>
+  </div>
